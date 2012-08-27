@@ -27,11 +27,17 @@ void main() {
              
                  if(terminado != ' '){
                     atualiza_tela(&jogo);
-                    if(terminado == 'X') allegro_message("\n\nO Chaves venceu!");
-                    else if(terminado == 'O') allegro_message("\n\nO Kiko venceu!");
+                    if(terminado == 'X'){
+                       allegro_message("\n\nO Chaves venceu!");
+                       jogo.personagens[0].score++;
+                    }
+                    else if(terminado == 'O'){
+                        allegro_message("\n\nO Kiko venceu!");
+                        jogo.personagens[1].score++;
+                    }
                     else allegro_message("\n\nOps, deu velha!\n");
-                
                     nova_rodada(&jogo);
+                    allegro_message("Chaves %d x %d Kiko", jogo.personagens[0].score, jogo.personagens[1].score);
                 }             
              }
              

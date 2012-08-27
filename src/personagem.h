@@ -10,7 +10,7 @@
         #define POS_Y_VEZ 250
         
         void constroi_personagem(Jogo *j);
-        void init_personagem(Jogo *j);
+        void init_personagem(Jogo *j, int isReset);
         void printa_personagem(Jogo *j, int pos_x, int pos_y);
         void printa_vez_atual(Jogo *j);
 #endif

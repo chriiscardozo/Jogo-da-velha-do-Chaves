@@ -24,11 +24,14 @@ void constroi_personagem(Jogo *j){
      }
 }
 
-void init_personagem(Jogo *j){
-     j->personagens[0].score = 0;
+void init_personagem(Jogo *j, int isReset){
      j->personagens[0].simbolo = 'X';
-     j->personagens[1].score = 0;
      j->personagens[1].simbolo = 'O';
+     
+     if(isReset){
+        j->personagens[0].score = 0;
+        j->personagens[1].score = 0;
+     }
 }
 
 void printa_personagem(Jogo *j, int pos_x, int pos_y){

@@ -74,11 +74,11 @@ void constroi_jogo(Jogo *j){
      constroi_personagem(j);
 }
 
-void init_jogo(Jogo *j){
+void init_jogo(Jogo *j, int isReset){
      play_midi(j->musica, 1);
      j->vez_player = 0;
      init_tabuleiro(j);
-     init_personagem(j);
+     init_personagem(j, isReset);
 }
 
 void desenha_jogo(Jogo *j){
@@ -93,14 +93,24 @@ void printa_jogo(Jogo *j){
 
 void novo_jogo(Jogo *j){
      constroi_jogo(j);
-     init_jogo(j);
+     init_jogo(j, 1);
      desenha_jogo(j);
      printa_jogo(j);
 }
 
+void define_quem_comeca(Jogo *j){
+     if(j->personagens[0].score <= j->personagens[1].score){
+        j->vez_player = 0;
+     }
+     else{
+        j->vez_player = 1;
+     }
+}
+
 void nova_rodada(Jogo *j){
      carregar_musica(j);
-     init_jogo(j);
+     init_jogo(j, 0);
+     define_quem_comeca(j);
      desenha_jogo(j);
      printa_jogo(j);
 }
